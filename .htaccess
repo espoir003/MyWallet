@@ -1,0 +1,19 @@
+RewriteEngine On
+
+RewriteRule ^welcome view/index.php
+
+RewriteRule ^login private/login_blade.php
+
+RewriteRule ^register private/register_blade.php
+
+RewriteRule ^dashboard private/dashboard_blade.php
+
+RewriteRule ^suppression/([0-9]+)$ private/delete.php?valeur=$1 [L]
+
+RewriteRule ^choix/([0-9a-zA-Z_-]+) private/choix.php?valeur=$1 [L]
+
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ private/erreur.php [L]
+
