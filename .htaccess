@@ -2,18 +2,28 @@ RewriteEngine On
 
 RewriteRule ^welcome view/index.php
 
-RewriteRule ^login private/login_blade.php
+RewriteRule ^login Routs/Routlogin.php
 
-RewriteRule ^register private/register_blade.php
+RewriteRule ^register Routs/RoutRegister.php
 
-RewriteRule ^dashboard private/dashboard_blade.php
+RewriteRule ^dashboard Routs/RoutDashboard.php
 
-RewriteRule ^suppression/([0-9]+)$ private/delete.php?valeur=$1 [L]
+RewriteRule ^ResetMessage Routs/RoutResetMessage.php
 
-RewriteRule ^choix/([0-9a-zA-Z_-]+) private/choix.php?valeur=$1 [L]
+RewriteRule ^MyMenu Routs/RoutMenu.php
+
+RewriteRule ^Setting Routs/RoutSettings.php
+
+RewriteRule ^Income Routs/RoutIncome.php
+
+RewriteRule ^details Routs/RoutDetails.php
+
+RewriteRule ^suppression/([0-9]+)$ Routs/delete.php?valeur=$1 [L]
+
+RewriteRule ^choix/([0-9a-zA-Z_-]+) Routs/choix.php?valeur=$1 [L]
 
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ private/erreur.php [L]
+RewriteRule ^(.*)$ Routs/erreur.php [L]
 

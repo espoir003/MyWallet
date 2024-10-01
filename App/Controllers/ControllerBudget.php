@@ -6,38 +6,45 @@ class BudgetController {
         $this->db = $db;
     }
 
-    // Créer un budget
+    // Créer un budget avec vérification du solde
     public function creerBudget($utilisateur_id, $montant, $categorie_id, $date_budget) {
         $budget = new Budget($this->db);
         $budget->utilisateur_id = $utilisateur_id;
         $budget->montant = $montant;
         $budget->categorie_id = $categorie_id;
         $budget->date_budget = $date_budget;
-        return $budget->creerBudget();
+
+        // Appeler la méthode du modèle pour créer un budget
+        return $budget->creerBudget(); // Retourne directement la réponse du modèle
     }
 
-    // Lire tous les budgets
-    public function afficherBudgets() {
+
+    // Méthode pour obtenir les budgets de l'utilisateur
+    public function getBudgets($utilisateur_id) {
         $budget = new Budget($this->db);
-        return $budget->getAllBudgets();
+        return $budget->getAllBudgets($utilisateur_id);
     }
 
     // Mettre à jour un budget
-    public function mettreAJourBudget($id, $utilisateur_id, $montant, $categorie_id, $date_budget) {
+    public function updateBudget($id, $utilisateur_id, $montant, $categorie_id, $date_budget) {
         $budget = new Budget($this->db);
         $budget->id = $id;
         $budget->utilisateur_id = $utilisateur_id;
         $budget->montant = $montant;
         $budget->categorie_id = $categorie_id;
         $budget->date_budget = $date_budget;
-        return $budget->updateBudget();
+
+        // Appeler la méthode du modèle pour mettre à jour un budget
+        return $budget->updateBudget(); // Retourne directement la réponse du modèle
     }
 
     // Supprimer un budget
-    public function supprimerBudget($id) {
+    public function deleteBudget($id) {
         $budget = new Budget($this->db);
         $budget->id = $id;
-        return $budget->deleteBudget();
+
+        // Appeler la méthode du modèle pour supprimer un budget
+        return $budget->deleteBudget(); // Retourne directement la réponse du modèle
     }
 }
 ?>
